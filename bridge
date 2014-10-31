@@ -1,0 +1,10 @@
+#!/bin/sh
+
+NAME=$1
+ADDRESS=$2
+
+ip link set $NAME down
+brctl delbr $NAME
+brctl addbr $NAME
+ip addr add $ADDRESS dev $NAME
+ip link set $NAME up

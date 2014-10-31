@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PREFIX=$1
+REMOTE_ADDR=$2
+LINK_ADDR=$3
+NAME=mt`echo $PREFIX | sed -e s/\\\\./s/g`
+
+ip tunnel add $NAME mode gre remote $REMOTE_ADDR
+ip addr add $LINK_ADDR/8 dev $NAME
+ip link set $NAME up
+ip route add $PREFIX/24 dev $NAME
