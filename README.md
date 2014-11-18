@@ -1,14 +1,14 @@
 Sunstone
 ========
-Named after the Viking navigational tool ([Sunstone Wiki][]), Sunstone will help your packets find their way between your [Docker](http://docker.com) containers.
+Named after the Viking navigational tool ([Sunstone][]), Sunstone will help your packets find their way between your [Docker](http://docker.com) containers.
 
-[Sunstone Wiki]: http://en.wikipedia.org/wiki/Sunstone_(medieval)
+[Sunstone]: http://en.wikipedia.org/wiki/Sunstone_(medieval)
 
 How it works
 ------------
 Sunstone uses GRE ([Generic Routing Encapsulation][]) to create tunnels between your Docker hosts. Sunstone runs on each host and tracks the status of all other hosts in the cluster. The `docker0` bridge on each host is assigned a unique subnet. Tunnels and routing rules linking each bridge to the rest of the cluster are created and destroyed as nodes join and leave the cluster. This allows any container or host to communicate with any other container in the cluster without having to expose ports publicly on the host.
 
-Example: in a cluster with web services, a database, a message queue and workers, all containers may communicate with each other and only the web service would require publicly exposed ports. E.g. `docker run -p 443:443 webervice`.
+Example: in a cluster with web services, a database, a message queue and workers, all containers may communicate with each other and only the web service would require publicly exposed ports. E.g. `docker run -p 443:443 webservice`.
 
 [Generic Routing Encapsulation]: http://en.wikipedia.org/wiki/Generic_Routing_Encapsulation
 
